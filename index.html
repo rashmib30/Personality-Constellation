@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Personality Constellation</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Lobster|Catamaran"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Catamaran", sans-serif;
+        background: url("images/pexels-francesco-ungaro-998641.jpg") no-repeat
+          center center/cover;
+        color: white;
+        text-align: center;
+      }
+
+      .container {
+        width: 600px;
+        margin: 30px auto;
+        background: #fff;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+      }
+
+      .title {
+        font-family: "Lobster", sans-serif;
+        color: #000210;
+        font-size: 32px;
+      }
+
+      .slider-container {
+        width: 100%;
+        margin-top: 10px;
+        position: relative;
+      }
+
+      .slider {
+        -webkit-appearance: none;
+        width: 100%;
+        height: 8px;
+        border-radius: 5px;
+        background: #dde5ff;
+        outline: none;
+        transition: opacity 0.2s;
+      }
+
+      input[type="range"]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: #000210;
+        cursor: pointer;
+      }
+
+      .label-container {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 5px;
+        color: #000210;
+        font-weight: bold;
+      }
+
+      .ticks {
+        display: flex;
+        justify-content: space-between;
+        margin: -5px 10px 0 15px;
+      }
+
+      .ticks > div {
+        width: 2px;
+        height: 5px;
+        background: #000210;
+      }
+
+      button {
+        margin-top: 20px;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+
+      #generateBtn {
+        background: #000210;
+        color: white;
+      }
+      #generateBtn:disabled {
+        background: #ccc;
+        color: #888;
+        cursor: not-allowed;
+        opacity: 0.6;
+      }
+      #resetBtn {
+        background: #ccc;
+        color: black;
+      }
+
+      #result {
+        margin-top: 20px;
+        font-size: 18px;
+        font-weight: bold;
+        color: #000210;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2 class="title">Discover Your Personality Constellation</h2>
+      <form id="traitForm">
+        <div class="slider-container">
+          <div class="label-container">
+            <span>Introvert</span><span>Extrovert</span>
+          </div>
+          <input
+            type="range"
+            min="1"
+            max="5"
+            step="1"
+            class="slider"
+            id="introExtro"
+          />
+          <div class="ticks">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+
+        <div class="slider-container">
+          <div class="label-container">
+            <span>Morning Person</span><span>Night Owl</span>
+          </div>
+          <input
+            type="range"
+            min="1"
+            max="5"
+            step="1"
+            class="slider"
+            id="morningNight"
+          />
+          <div class="ticks">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+
+        <div class="slider-container">
+          <div class="label-container">
+            <span>Spontaneous</span><span>Organized</span>
+          </div>
+          <input
+            type="range"
+            min="1"
+            max="5"
+            step="1"
+            class="slider"
+            id="spontaneousOrganized"
+          />
+          <div class="ticks">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+
+        <div class="slider-container">
+          <div class="label-container">
+            <span>Optimist</span><span>Pessimist</span>
+          </div>
+          <input
+            type="range"
+            min="1"
+            max="5"
+            step="1"
+            class="slider"
+            id="optimistRealistPessimist"
+          />
+          <div class="ticks">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+
+        <div class="slider-container">
+          <div class="label-container">
+            <span>Logical</span><span>Emotional</span>
+          </div>
+          <input
+            type="range"
+            min="1"
+            max="5"
+            step="1"
+            class="slider"
+            id="logicalEmotional"
+          />
+          <div class="ticks">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+
+        <div class="slider-container">
+          <div class="label-container">
+            <span>Mellow</span><span>Peppy</span>
+          </div>
+          <input
+            type="range"
+            min="1"
+            max="5"
+            step="1"
+            class="slider"
+            id="mellowPeppy"
+          />
+          <div class="ticks">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+
+        <div class="slider-container">
+          <div class="label-container"><span>Neat</span><span>Messy</span></div>
+          <input
+            type="range"
+            min="1"
+            max="5"
+            step="1"
+            class="slider"
+            id="neatMessy"
+          />
+          <div class="ticks">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+
+        <div class="slider-container">
+          <div class="label-container">
+            <span>Minimalist</span><span>Maximalist</span>
+          </div>
+          <input
+            type="range"
+            min="1"
+            max="5"
+            step="1"
+            class="slider"
+            id="minimalistMaximalist"
+          />
+          <div class="ticks">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+
+        <button type="button" id="generateBtn" onclick="generateName()">
+          Get Your Constellation Name
+        </button>
+        <button type="button" id="resetBtn" onclick="resetForm()">Reset</button>
+      </form>
+
+      <div id="result"></div>
+    </div>
+
+    <script>
+      const constellationEndings = [
+        "ox",
+        "us",
+        "is",
+        "on",
+        "or",
+        "os",
+        "ar",
+        "an",
+        "ix",
+        "al",
+        "is",
+        "ius",
+        "ax",
+        "orion",
+        "isca",
+        "ara",
+        "isus",
+        "oth",
+        "ides",
+        "ides",
+        "ion",
+        "ae",
+        "eus",
+        "ian",
+        "ior",
+        "yn",
+        "anax",
+        "enos",
+        "ith",
+        "ides",
+        "aris",
+        "ionis",
+        "elos",
+        "enus",
+        "iel",
+        "aeon",
+        "ixis",
+        "ithon",
+        "yros",
+        "exis",
+        "thos",
+        "emon",
+        "vion",
+        "eron",
+        "alor",
+        "enus",
+        "uron",
+        "orax",
+        "ionas",
+        "icron",
+        "dros",
+        "xion",
+        "eos",
+        "othis",
+        "ytis",
+        "aris",
+        "alios",
+        "enos",
+        "xas",
+        "thas",
+        "elus",
+        "vios",
+        "zian",
+        "elion",
+        "oxis",
+        "atros",
+        "emnos",
+        "urian",
+        "axos",
+        "iris",
+        "adros",
+        "entis",
+        "eleos",
+        "ilios",
+        "artis",
+        "crion",
+        "lyon",
+        "oryx",
+        "enos",
+        "orbis",
+        "eon",
+        "saros",
+        "ilios",
+        "yxis",
+        "aion",
+        "metis",
+        "nos",
+        "nyx",
+        "aris",
+        "pax",
+        "orionis",
+        "loris",
+        "eius",
+        "vex",
+        "ereon",
+        "ixor",
+        "daros",
+        "xelon",
+        "eidos",
+        "nectis",
+      ];
+      let constellationNames = [];
+      function getRandomTrait() {
+        const coreIdentity = {
+          introExtro: ["Lyra", "Orion", "Perseus", "Altair", "Sirius"],
+          logicalEmotional: ["Solon", "Chiron", "Equinox", "Callisto", "Elara"],
+          optimistRealistPessimist: [
+            "Eos",
+            "Vega",
+            "Antares",
+            "Umbra",
+            "Lethe",
+          ],
+        };
+
+        const celestialAspect = {
+          morningNight: ["Aurora", "Hesperus", "Vespera", "Selene", "Noctis"],
+          spontaneousOrganized: ["Nova", "Argo", "Axis", "Regulus", "Polaris"],
+        };
+
+        const cosmicTouch = {
+          mellowPeppy: ["Cygnus", "Elysian", "Orphic", "Phoenix", "Electra"],
+          neatMessy: ["Aether", "Nebula", "Draco", "Maelstrom", "Chaos"],
+          minimalistMaximalist: [
+            "Lumen",
+            "Horizon",
+            "Hyperion",
+            "Cosmos",
+            "Celestia",
+          ],
+        };
+
+        function randomKey(obj) {
+          const keys = Object.keys(obj);
+          return keys[Math.floor(Math.random() * keys.length)];
+        }
+
+        function getSelectedValue(category, key) {
+          const sliderValue = document.getElementById(key)?.value || 3; // Default to middle value
+          return category[key][sliderValue - 1]; // Adjust index (1-based to 0-based)
+        }
+
+        function getRandomLetters(word) {
+          if (word.length < 2) return word; // Handle short words
+          let i = Math.floor(Math.random() * word.length);
+          let j = Math.floor(Math.random() * word.length);
+          while (i === j) j = Math.floor(Math.random() * word.length);
+          return word[i] + word[j];
+        }
+
+        let primaryKey = randomKey(coreIdentity);
+        let secondaryKey = randomKey(celestialAspect);
+        let tertiaryKey = randomKey(cosmicTouch);
+
+        let primary = getSelectedValue(coreIdentity, primaryKey);
+        let secondary = getSelectedValue(celestialAspect, secondaryKey);
+        let tertiary = getSelectedValue(cosmicTouch, tertiaryKey);
+
+        let lettersPrimary = getRandomLetters(primary);
+        let lettersSecondary = getRandomLetters(secondary);
+        let lettersTertiary = getRandomLetters(tertiary);
+
+        let randomEnding =
+          constellationEndings[
+            Math.floor(Math.random() * constellationEndings.length)
+          ];
+
+        let finalName =
+          lettersPrimary + lettersSecondary + lettersTertiary + randomEnding;
+
+        return { primary, secondary, tertiary, finalName };
+      }
+      function toSentenceCase(word) {
+        if (!word) return "";
+        return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+      }
+      document
+        .getElementById("generateBtn")
+        .addEventListener("click", function () {
+          const traits = getRandomTrait();
+          let x = traits.finalName;
+          let final = toSentenceCase(x);
+          console.log(final);
+          document.getElementById(
+            "result"
+          ).innerHTML = `<strong>Your Constellation Name:</strong> ${final} <br><br> Previous Names: ${constellationNames.join(
+            ", "
+          )}`;
+          constellationNames.push(final);
+        });
+
+      function resetForm() {
+        document.getElementById("traitForm").reset();
+        document.getElementById("result").innerHTML = "";
+        document.getElementById("generateBtn").disabled = false;
+        constellationNames = [];
+      }
+    </script>
+  </body>
+</html>
